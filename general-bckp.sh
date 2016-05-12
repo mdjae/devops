@@ -4,6 +4,8 @@
 # author : mdjae
 # -----------------------------------------------------
 
+echo "Get the Party started ! .... "
+echo "-------------------------------------------------"
 # Set start time 
 SECONDS=0
 DATE='data +%d%m%y'
@@ -18,6 +20,20 @@ for elt in ${REMOTESRV[@]}
 do  
   IFS=':' read -a SRV <<< "$elt"
   # Execute backup command on remote server
-  ssh ${SRV[0]}@$${SRV[1]} ${SRV[2]} 
+  # -T disable pseudo-tty allocation
+  ssh -T ${SRV[0]}@$${SRV[1]} < /opt/extract-dump.sh
 
 done
+
+#TODO : rsync -0av --progress
+
+duration=$SECONDS
+echo "The party stop after $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
+SUBJECT=“Automated Security Alert”
+TO=“alarms@ariejan.net”
+MESSAGE="The party stop after $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
+
+
+/usr/bin/mail -s "$SUBJECT" "$TO" < $MESSAGE
+
+

@@ -1,0 +1,2 @@
+- Deploy tools
+- Continous integration

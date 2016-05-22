@@ -1,8 +1,0 @@
-wget http://wordpress.org/latest.tar.gz
-tar xfz latest.tar.gz
-mv wordpress/* ./
-rmdir ./wordpress/
-rm -f latest.tar.gz
-
-CREATE USER 'clt_politikfranc'@'%' IDENTIFIED BY '***';
-GRANT USAGE ON *.* TO 'clt_politikfranc'@'%' IDENTIFIED BY '***' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;CREATE DATABASE IF NOT EXISTS `clt_politikfranc`;GRANT ALL PRIVILEGES ON `clt\_politikfranc`.* TO 'clt_politikfranc'@'%';

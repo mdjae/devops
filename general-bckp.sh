@@ -29,10 +29,9 @@ done
 
 duration=$SECONDS
 echo "The party stop after $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
-SUBJECT=“Automated Security Alert”
-TO=“alarms@ariejan.net”
+SUBJECT=“Automated Infos mail”
+TO=“foo@bar.net”
 MESSAGE="The party stop after $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
-
 
 /usr/bin/mail -s "$SUBJECT" "$TO" < $MESSAGE
 
